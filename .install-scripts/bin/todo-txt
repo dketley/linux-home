@@ -5,7 +5,7 @@ TODO_DIR=${FILESYNC_DIR:=~/Dropbox}/${FILESYNC_TODO_DIR:=Apps/Simpletask}
 TODO_LINK=~/.todo-txt
 TODO_ADDONS=~/.todo.actions.d
 ADDONS_SOURCE=$TODO_ADDONS/SOURCE
-HELPER_SCRIPT=../lib/todo-txt.py
+HELPER_SCRIPT=~/.install-scripts/lib/todo-txt.py
 
 sudo apt-get -y install \
     dropbox             \
@@ -20,4 +20,4 @@ if dropbox status > /dev/null && [ -d $TODO_DIR ]; then
 fi
 
 # Install all the addons in the SOURCE file
-./$HELPER_SCRIPT $ADDONS_SOURCE $TODO_ADDONS
+$HELPER_SCRIPT $ADDONS_SOURCE $TODO_ADDONS

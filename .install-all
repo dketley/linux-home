@@ -1,0 +1,24 @@
+#!/bin/bash -e
+
+BIN_DIR=./.install-scripts/bin
+
+GREEN="\e[32m"
+RESET="\e[0m"
+
+echo This script will run all of the scripts in $BIN_DIR
+echo -e These scripts are:$GREEN
+ls $BIN_DIR
+echo -e $RESET
+while true; do
+    read -p "Do you wish to continue? " yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+for script in $BIN_DIR/* ; do
+    echo -e "${GREEN}Running install for $(basename $script)...${RESET}"
+    ./$script
+done

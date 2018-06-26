@@ -5,7 +5,7 @@
 	email = dom.ketley@gmail.com
 	username = dketley
 [core]
-	editor = subl
+	editor = "subl -w"
 	autocrlf = input
 [alias]
 	st = status
@@ -16,7 +16,7 @@
     up = !git pull --rebase --prune $@ && git submodule update --init --recursive
     cob = checkout -b
     cm = !git add -A && git commit -m
-    save = !git --add -A && git commit -m 'SAVEPOINT'
+    save = !git add -A && git commit -m 'SAVEPOINT'
     wip = commit -am "WIP"
     undo = reset HEAD~1 --mixed
     amend = commit -a --amend
@@ -32,3 +32,8 @@
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     forkdiff = !bash -c 'git diff $(git merge-base "$1" "$2") "$2" "${@: 3}" ' -
     untrack = rm --cache --
+    com = "!f() { git checkout ${1-master} }; f"
+    ms = merge --squash
+    brd = branch -D
+    addf = add -f
+    caa = commit -a --amend -C HEAD
