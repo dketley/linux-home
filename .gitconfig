@@ -5,12 +5,13 @@
 	email = dom.ketley@gmail.com
 	username = dketley
 [core]
-	editor = vim
+	editor = subl
 	autocrlf = input
 [alias]
 	st = status
 	ci = commit
 	co = checkout
+    br = branch
     ec = config --global -e
     up = !git pull --rebase --prune $@ && git submodule update --init --recursive
     cob = checkout -b
@@ -22,3 +23,12 @@
     wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
     bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs git branch -d; }; f"
     bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+    llog = log --date=local
+    changes=diff --name-status -r
+    diffstat=diff --stat -r
+    prune-all = !git remote | xargs -n 1 git remote prune
+    edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
+    add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    forkdiff = !bash -c 'git diff $(git merge-base "$1" "$2") "$2" "${@: 3}" ' -
+    untrack = rm --cache --
