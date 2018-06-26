@@ -1,8 +1,12 @@
 FROM ubuntu:latest
 
-# Install necessary packages
-RUN apt-get update
-RUN apt-get install -y git sudo
+# Install basic packages
+RUN apt-get update && apt-get install -y \
+    git \
+    sudo
+
+# Whether we're doing a local build
+ARG LOCAL
 
 ENV USER test
 ENV USERGROUP test
@@ -23,6 +27,10 @@ COPY sudoers.awk /tmp/sudoers.awk
 RUN cp /etc/sudoers /etc/sudoers.bak
 RUN awk -f /tmp/sudoers.awk /etc/sudoers.bak > /etc/sudoers
 
+# Ensure local copy of install scripts is available in case we're doing a dev build
+COPY ./bin/ /tmp/bin/
+RUN chown -R $USER:$USERGROUP /tmp/bin/
+
 # Switch to the user
 USER $USER
 WORKDIR $USERHOME
@@ -31,11 +39,18 @@ WORKDIR $USERHOME
 RUN git init
 RUN git remote add origin https://github.com/dketley/linux-home.git
 RUN echo yes | git fetch
-# RUN git reset origin/master
 RUN git checkout -t origin/master
 
-# Run install scripts
-RUN $INSTALL_SCRIPT_DIR/*
+# If we're doing a local build, copy build scripts
+RUN [ $LOCAL ] && rm -rf $INSTALL_SCRIPT_DIR/bin || true
+RUN [ $LOCAL ] && mv /tmp/bin $INSTALL_SCRIPT_DIR/bin || true
+
+# Run install scripts. Do this with multiple RUN commands to save time on build
+WORKDIR $INSTALL_SCRIPT_DIR/bin
+RUN ./docker
+RUN ./flatpak
+RUN ./todo-txt
 
 # Run bash by default
+WORKDIR $USERHOME
 CMD ["/bin/bash"]

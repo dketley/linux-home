@@ -1,0 +1,23 @@
+#!/bin/bash -e
+
+# The directory where we should store the todo.txt files
+TODO_DIR=${FILESYNC_DIR:=~/Dropbox}/${FILESYNC_TODO_DIR:=Apps/Simpletask}
+TODO_LINK=~/.todo-txt
+TODO_ADDONS=~/.todo.actions.d
+ADDONS_SOURCE=$TODO_ADDONS/SOURCE
+HELPER_SCRIPT=../lib/todo-txt.py
+
+sudo apt-get -y install \
+    dropbox             \
+    todotxt-cli
+
+# Setup dropbox syncing for todotxt-cli
+if dropbox status > /dev/null && [ -d $TODO_DIR ]; then
+    if [ -d $TODO_LINK ] && [ ! -L $TODO_LINK ] ; then
+        mv $TODO_LINK ${TODO_LINK}.bak
+        ln -s $TODO_DIR $TODO_LINK
+    fi
+fi
+
+# Install all the addons in the SOURCE file
+./$HELPER_SCRIPT $ADDONS_SOURCE $TODO_ADDONS
