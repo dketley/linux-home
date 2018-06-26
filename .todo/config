@@ -82,10 +82,13 @@ export COLOR_CONTEXT=$RED
 # priority hiding, context hiding, and project hiding. That is,
 # just before the list output is displayed.
 #
-export TODOTXT_FINAL_FILTER=(
-    '~/.todo.actions.d/filters/futureTasks'
-    '~/.todo.actions.d/filters/colorNotes'
-)
+export TODOTXT_FINAL_FILTER='~/.todo.actions.d/filters/multiFilter'
+
+# TODOTXT_FINAL_FILTER_LIST will, combined with setting TODOTXT_FINAL_FILTER
+# to multiFilter, use multiple filters on the output in the order defined.
+TODOTXT_FINAL_FILTER_LIST='/home/dom/.todo.actions.d/filters/futureTasks'
+TODOTXT_FINAL_FILTER_LIST+='|/home/dom/.todo.actions.d/filters/colorNotes'
+export TODOTXT_FINAL_FILTER_LIST
 
 # Default action
 export TODOTXT_DEFAULT_ACTION='ls'

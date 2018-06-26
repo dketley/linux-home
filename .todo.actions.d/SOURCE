@@ -1,11 +1,12 @@
 add,edit,e,nav=wget;https://raw.githubusercontent.com/doegox/todo.txt-cli/extras/todo.actions.d
 birdseye,birdseye.py=wget;https://raw.githubusercontent.com/todotxt/todo.txt-cli/addons/.todo.actions.d
+colorNotes,multiFilter=wget;https://raw.githubusercontent.com/dketley/todo.txt-cli/master/todo.actions.d/filters;filters
 due=git;https://github.com/rebeccamorgan/due.git
 futureTasks=wget;https://raw.githubusercontent.com/FND/todo.txt-cli/extensions;filters
 graph=git;https://github.com/timpulver/todo.txt-graph.git
 hiding=git;https://github.com/klausweiss/todo.txt-hiding.git
-lately,lately.py=wget;https://raw.githubusercontent.com/emilerl/emilerl/master/todo.actions.d
+lately,lately.py=wget;https://raw.githubusercontent.com/dketley/emilerl/master/todo.actions.d
 note=wget;https://raw.githubusercontent.com/mgarrido/todo.txt-cli/note/todo.actions.d
 outline,archive,ol=wget;https://raw.githubusercontent.com/samuelsnyder/outline-todo.txt/master
-projectview,pv=wget;https://raw.githubusercontent.com/the1ts/todo.txt-plugins/master/actions/projectview
+projectview,pv=wget;https://raw.githubusercontent.com/dketley/todo.txt-plugins/master/actions/projectview
 schedule=wget;https://raw.githubusercontent.com/FND/todo.txt-cli/extensions
