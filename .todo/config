@@ -88,6 +88,7 @@ export TODOTXT_FINAL_FILTER='~/.todo.actions.d/filters/multiFilter'
 # to multiFilter, use multiple filters on the output in the order defined.
 TODOTXT_FINAL_FILTER_LIST='/home/dom/.todo.actions.d/filters/futureTasks'
 TODOTXT_FINAL_FILTER_LIST+='|/home/dom/.todo.actions.d/filters/colorNotes'
+TODOTXT_FINAL_FILTER_LIST+='|/home/dom/.todo.actions.d/filters/colorDates'
 export TODOTXT_FINAL_FILTER_LIST
 
 # Default action
