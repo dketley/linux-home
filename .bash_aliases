@@ -28,7 +28,7 @@ function prompt {
 
 prompt
 
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH:$HOME/.local/bin"
 
 # Prepend today's date onto new tasks
 TODOTXT_SCRIPT=$(which todo-txt)
