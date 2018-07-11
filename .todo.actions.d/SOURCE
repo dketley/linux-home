@@ -1,6 +1,7 @@
 add,edit,e,nav=wget;https://raw.githubusercontent.com/doegox/todo.txt-cli/extras/todo.actions.d
 birdseye,birdseye.py=wget;https://raw.githubusercontent.com/todotxt/todo.txt-cli/addons/.todo.actions.d
-colorDates,colorNotes,multiFilter=wget;https://raw.githubusercontent.com/dketley/todo.txt-cli/master/todo.actions.d/filters;filters
+colorDates,colorNotes,multiFilter=wget;https://raw.githubusercontent.com/dketley/todo.txt-cli/extensions/todo.actions.d/filters;filters
+appm,appendm=wget;https://raw.githubusercontent.com/dketley/todo.txt-cli/extensions/todo.actions.d
 due=git;https://github.com/rebeccamorgan/due.git
 futureTasks=wget;https://raw.githubusercontent.com/FND/todo.txt-cli/extensions;filters
 graph=git;https://github.com/timpulver/todo.txt-graph.git
