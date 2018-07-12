@@ -34,3 +34,4 @@ export PATH="$HOME/.cargo/bin:$PATH:$HOME/.local/bin"
 TODOTXT_SCRIPT=$(which todo-txt)
 alias todo-txt="$TODOTXT_SCRIPT -t"
 alias t='todo-txt'
+complete -F _todo t
