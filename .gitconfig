@@ -37,3 +37,4 @@
     brd = branch -D
     addf = add -f
     caa = commit -a --amend -C HEAD
+    brename = git branch -m
