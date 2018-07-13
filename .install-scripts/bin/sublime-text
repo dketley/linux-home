@@ -1,0 +1,24 @@
+#!/bin/bash -e 
+
+DROPBOX_SUBLIME_DIR=~/Dropbox/Sublime/User
+SUBLIME_USER_DIR_LINUX=~/.config/sublime-text-3/Packages/User
+SUBLIME_USER_DIR_MAC=~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+OS=$(uname)
+if [[ $OS == "Linux" ]]; then
+    SUBLIME_USER_DIR=$SUBLIME_USER_DIR_LINUX
+elif [[ $OS == "Darwin" ]]; then
+    SUBLIME_USER_DIR=$SUBLIME_USER_DIR_MAC
+fi
+BACKUP_DIR=${SUBLIME_USER_DIR}.bak
+
+sudo apt-get install -y \
+    dropbox \
+    sublime-text
+
+if dropbox status >/dev/null 2>&1 && [[ -d $DROPBOX_SUBLIME_DIR ]]; then
+    if [[ ! -L $SUBLIME_USER_DIR ]] && [[ -d $SUBLIME_USER_DIR ]] && [[ ! -d $BACKUP_DIR ]]; then
+        pkill -9 sublime_text || true
+        mv $SUBLIME_USER_DIR $BACKUP_DIR
+        ln -s $DROPBOX_SUBLIME_DIR $SUBLIME_USER_DIR
+    fi
+fi

@@ -2,4 +2,6 @@
 
 sudo apt install -y guake \
 	nfs-common \
-	net-tools
+	nfs-kernel-server \
+	net-tools \
+	openssh-server
