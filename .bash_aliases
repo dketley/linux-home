@@ -3,7 +3,7 @@
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
-function prompt {
+_prompt() {
   local BLACK="\[\033[0;30m\]"
   local BLACKBOLD="\[\033[1;30m\]"
   local RED="\[\033[0;31m\]"
@@ -26,7 +26,7 @@ function prompt {
   export PS2=" | → $RESETCOLOR"
 }
 
-prompt
+_prompt
 
 export PATH="$HOME/.cargo/bin:$PATH:$HOME/.local/bin"
 
@@ -34,4 +34,5 @@ export PATH="$HOME/.cargo/bin:$PATH:$HOME/.local/bin"
 TODOTXT_SCRIPT=$(which todo-txt)
 alias todo-txt="$TODOTXT_SCRIPT -t"
 alias t='todo-txt'
-complete -F _todo t
+_completion_loader todo-txt
+complete -o bashdefault -o default -o nospace -F _todo t

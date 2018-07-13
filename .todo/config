@@ -91,6 +91,11 @@ TODOTXT_FINAL_FILTER_LIST+='|~/.todo.actions.d/filters/colorNotes'
 TODOTXT_FINAL_FILTER_LIST+='|~/.todo.actions.d/filters/colorDates'
 export TODOTXT_FINAL_FILTER_LIST
 
+export TODOTXT_CONTEXT_FILE="$TODO_DIR/.context"
+export TODOTXT_SOMEDAY='@someday'
+#TODOTXT_FINAL_FILTER_LIST+='|~/.todo.actions.d/filters/contextFilter'
+
+
 # Default action
 export TODOTXT_DEFAULT_ACTION='ls'
 

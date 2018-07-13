@@ -1,3 +1,5 @@
 #!/bin/bash -e
 
-sudo apt install -y guake
+sudo apt install -y guake \
+	nfs-common \
+	net-tools
